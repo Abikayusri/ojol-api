@@ -10,5 +10,5 @@ interface UserRepository {
 
     fun getUserByUsername(username: String): Result<User>
 
-    fun getUsers(): List<User>
+    fun getUsers(): Result<List<User>>
 }

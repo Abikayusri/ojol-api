@@ -1,8 +1,9 @@
 package abika.sinau.ojolapi.user.repository
 
 import abika.sinau.ojolapi.database.DatabaseComponent
-import abika.sinau.ojolapi.utils.toResult
+import abika.sinau.ojolapi.exception.OjolException
 import abika.sinau.ojolapi.user.entity.User
+import abika.sinau.ojolapi.utils.toResult
 import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
@@ -11,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
 @Repository
-class UserRepositoryImpl: UserRepository {
+class UserRepositoryImpl : UserRepository {
 
     @Autowired
     private lateinit var databaseComponent: DatabaseComponent
@@ -21,8 +22,8 @@ class UserRepositoryImpl: UserRepository {
     override fun insertUser(user: User): Result<Boolean> {
         val existingUser = getUserByUsername(user.username)
 
-        return if(existingUser.isSuccess) {
-            throw IllegalStateException("User ${user.username} is exist")
+        return if (existingUser.isSuccess) {
+            throw OjolException ("User ${user.username} already exist")
         } else {
             userCollection().insertOne(user).wasAcknowledged().toResult()
         }
@@ -36,7 +37,7 @@ class UserRepositoryImpl: UserRepository {
         return userCollection().findOne(User::username eq username).toResult("User $username not found")
     }
 
-    override fun getUsers(): List<User> {
-        return userCollection().find().toList()
+    override fun getUsers(): Result<List<User>> {
+        return userCollection().find().toList().toResult()
     }
 }

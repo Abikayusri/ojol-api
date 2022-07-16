@@ -1,6 +1,6 @@
 package abika.sinau.ojolapi.utils
 
-import abika.sinau.ojolapi.authentication.OjolException
+import abika.sinau.ojolapi.exception.OjolException
 
 inline fun <reified T> T?.orThrow(
     message: String = "${T::class.simpleName} is Null"

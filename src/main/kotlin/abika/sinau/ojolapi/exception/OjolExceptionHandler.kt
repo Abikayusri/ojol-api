@@ -1,4 +1,4 @@
-package abika.sinau.ojolapi.authentication
+package abika.sinau.ojolapi.exception
 
 import abika.sinau.ojolapi.utils.BaseResponse
 import abika.sinau.ojolapi.utils.Empty
