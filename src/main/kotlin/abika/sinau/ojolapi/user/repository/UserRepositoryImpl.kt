@@ -1,9 +1,7 @@
 package abika.sinau.ojolapi.user.repository
 
 import abika.sinau.ojolapi.database.DatabaseComponent
-import abika.sinau.ojolapi.orThrow
-import abika.sinau.ojolapi.toResult
-import abika.sinau.ojolapi.user.controller.UserController
+import abika.sinau.ojolapi.utils.toResult
 import abika.sinau.ojolapi.user.entity.User
 import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq

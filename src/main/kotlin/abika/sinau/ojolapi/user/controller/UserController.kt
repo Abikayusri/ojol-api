@@ -1,7 +1,7 @@
 package abika.sinau.ojolapi.user.controller
 
-import abika.sinau.ojolapi.BaseResponse
-import abika.sinau.ojolapi.toResponses
+import abika.sinau.ojolapi.utils.BaseResponse
+import abika.sinau.ojolapi.utils.toResponses
 import abika.sinau.ojolapi.user.entity.User
 import abika.sinau.ojolapi.user.entity.UserLogin
 import abika.sinau.ojolapi.user.service.UserService

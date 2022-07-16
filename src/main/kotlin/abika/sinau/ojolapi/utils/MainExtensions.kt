@@ -1,4 +1,6 @@
-package abika.sinau.ojolapi
+package abika.sinau.ojolapi.utils
+
+import abika.sinau.ojolapi.authentication.OjolException
 
 inline fun <reified T> T?.orThrow(
     message: String = "${T::class.simpleName} is Null"
@@ -28,7 +30,7 @@ inline fun <reified T> T?.toResult(
     }
 }
 
-fun <T>Result<T>.toResponses(): BaseResponse<T>{
+fun <T>Result<T>.toResponses(): BaseResponse<T> {
     return if (this.isFailure) {
         throw OjolException(this.exceptionOrNull()?.message ?: "Failure")
     } else {

@@ -1,4 +1,4 @@
-package abika.sinau.ojolapi
+package abika.sinau.ojolapi.utils
 
 open class BaseResponse<T>(
         var status: Boolean = true,
